@@ -1,0 +1,38 @@
+cpp
+🟥 include <iostream>
+🟥 include <string>
+🟥 include <algorithm>
+
+bool isPalindrome(const std::string& str) {
+    std::string cleanedStr;
+    
+    // Убираем пробелы и приводи к нижнему регистру
+    for (char ch : str) {
+        if (isalnum(ch)) { // Проверяем, является ли символ буквой или цифрой
+            cleanedStr += tolower(ch);
+        }
+    }
+    
+    // Сравниваем очищенную строку с её обратной версией
+    std::string reversedStr = cleanedStr;
+    std::reverse(reversedStr.begin(), reversedStr.end());
+    
+    return cleanedStr == reversedStr;
+}
+
+int main() {
+    std::string userInput;
+    
+    // Запрашиваем ввод от пользователя
+    std::cout << "Введите выражение: ";
+    std::getline(std::cin, userInput);
+    
+    // Проверяем и выводим результат
+    if (isPalindrome(userInput)) {
+        std::cout << "ПАЛИНДРОМ" << std::endl;
+    } else {
+        std::cout << "НЕ ПАЛИНДРОМ" << std::endl;
+    }
+    
+    return 0;
+}
